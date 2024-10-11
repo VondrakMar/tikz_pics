@@ -1,0 +1,22 @@
+\documentclass{standalone}
+\usepackage{tikz}
+\usetikzlibrary{calc}
+
+\begin{document}
+\begin{tikzpicture}
+  % Draw a grid in green
+  
+  % Fill the diagonal with a gradient from green to blue
+  \foreach \a in {1,...,10}{
+    \foreach \b in {1,...,10}{
+      % Calculate a color that blends green and blue based on the position
+      %% \pgfmathparse{}{int(\a*10)}
+      %% \pgfmathsetmacro{\gridvalue}{\a*10}
+      \pgfmathsetmacro{\gridvalue}{random(15,80)}
+      \fill[cyan!\gridvalue!white] (\a-1,\b-1) rectangle (\a,\b);
+      }
+  }
+  \draw[black] (0,0) grid (10,10);
+  
+\end{tikzpicture}
+\end{document}
